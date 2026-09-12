@@ -31,7 +31,24 @@ workflows:
       - name: Sync Capacitor iOS project
         script: |
           npx cap sync ios
-
+      - name: Set Hí Black app icon
+        script: |
+          set -e
+          ICON_DIR="$CM_BUILD_DIR/ios/App/App/Assets.xcassets/AppIcon.appiconset"
+          rm -rf "$ICON_DIR"
+          mkdir -p "$ICON_DIR"
+          cp AppIcon-20@2x.png "$ICON_DIR/"
+          cp AppIcon-20@3x.png "$ICON_DIR/"
+          cp AppIcon-29@2x.png "$ICON_DIR/"
+          cp AppIcon-29@3x.png "$ICON_DIR/"
+          cp AppIcon-40@2x.png "$ICON_DIR/"
+          cp AppIcon-40@3x.png "$ICON_DIR/"
+          cp AppIcon-60@2x.png "$ICON_DIR/"
+          cp AppIcon-60@3x.png "$ICON_DIR/"
+          cp AppIcon-76@2x.png "$ICON_DIR/"
+          cp AppIcon-83.5@2x.png "$ICON_DIR/"
+          cp AppIcon-1024.png "$ICON_DIR/"
+          cp Contents.json "$ICON_DIR/"
       - name: Install CocoaPods dependencies
         script: |
           cd ios/App
