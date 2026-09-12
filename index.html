@@ -11,9 +11,9 @@
 html,body{margin:0;min-height:100%;background:rgba(2,4,10,.18);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 body{overflow-x:hidden}
 button,input{font:inherit}button{cursor:pointer}
-.bg-orb{position:fixed;border-radius:50%;filter:blur(70px);opacity:.35;pointer-events:none;z-index:0}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(70px);opacity:.28;pointer-events:none;z-index:2}
 .orb1{width:240px;height:240px;background:#1464ff;top:-80px;right:-80px}.orb2{width:220px;height:220px;background:#003bff;bottom:5%;left:-110px}
-.wrap{position:relative;z-index:1;max-width:760px;margin:auto;padding:18px 14px 50px}
+.wrap{position:relative;z-index:3;max-width:760px;margin:auto;padding:18px 14px 50px}
 .top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
 .brand{font-size:28px;font-weight:950;letter-spacing:-1.5px;text-shadow:0 0 22px rgba(52,126,255,.55)}
 .pill{border:1px solid var(--line);background:rgba(7,12,23,.7);backdrop-filter:blur(14px);border-radius:999px;padding:8px 12px;font-size:12px;color:#b9c9e6}
@@ -33,15 +33,15 @@ input:focus{border-color:#4f92ff;box-shadow:0 0 0 3px rgba(40,120,255,.13)}
 .hide{display:none!important}.notice{padding:12px 14px;border-radius:14px;background:#0b101c;border:1px solid #273650;margin:10px 0}.ok{color:#8ff0b1}.err{color:#ff9caa}
 .key{white-space:pre-wrap;word-break:break-word;background:#03050a;border:1px dashed #42536f;border-radius:12px;padding:12px;margin-top:8px}
 .loading{text-align:center;color:#93a1b9;padding:24px}.footer{text-align:center;color:#68758c;font-size:12px;padding:24px 0}
-.contact-dock{position:fixed;right:12px;top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;gap:10px}
-.contact-btn{width:50px;height:50px;border-radius:16px;border:1px solid rgba(255,255,255,.18);color:#fff;font-weight:950;box-shadow:0 10px 28px rgba(0,0,0,.4);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:.2s}
+
+
 .contact-btn:hover{transform:scale(1.06)}.zalo{background:linear-gradient(145deg,#087cff,#0051c8)}.tiktok{background:linear-gradient(145deg,#20232b,#050609)}
 .contact-btn span{font-size:11px}.contact-label{position:absolute;right:58px;background:#0b101a;border:1px solid #293851;border-radius:10px;padding:6px 9px;font-size:11px;white-space:nowrap;opacity:0;pointer-events:none;transition:.2s}.contact-btn:hover .contact-label{opacity:1}
 .modal{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(0,0,0,.78);backdrop-filter:blur(14px)}
 .modal-box{width:min(460px,100%);max-height:92vh;overflow:auto;background:linear-gradient(145deg,#10192a,#05070c);border:1px solid rgba(75,137,255,.5);border-radius:26px;padding:18px;box-shadow:0 30px 100px rgba(0,0,0,.65);animation:pop .3s ease}
 .modal-head{display:flex;justify-content:space-between;align-items:center;gap:10px}.close{width:40px;height:40px;border-radius:12px;border:1px solid #30415e;background:#0a101b;color:#fff;font-size:22px}
 .qr-wrap{margin:14px auto;padding:10px;border-radius:20px;background:#fff;max-width:350px;box-shadow:0 0 40px rgba(46,125,255,.2)}.qr-wrap img{display:block;width:100%;height:auto;border-radius:12px}.pay-note{text-align:center;color:#a9b7cd;font-size:13px;margin:10px 4px 0}
-.splash{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#02040a}
+.splash{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;overflow:hidden;background:rgba(2,4,10,.22);backdrop-filter:none}
 .splash.hideSplash{animation:splashOut .7s ease forwards}
 .splash-inner{text-align:center;width:min(420px,90%);position:relative}
 .logo-mark{width:104px;height:104px;margin:0 auto 20px;border-radius:30px;background:linear-gradient(145deg,#0e1830,#02040a);border:1px solid #397cff;box-shadow:0 0 70px rgba(38,119,255,.4),inset 0 0 35px rgba(47,121,255,.15);display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:950;color:#fff;animation:float 2.4s ease-in-out infinite}
@@ -52,8 +52,19 @@ input:focus{border-color:#4f92ff;box-shadow:0 0 0 3px rgba(40,120,255,.13)}
 @keyframes float{50%{transform:translateY(-8px) rotate(2deg)}}@keyframes pop{from{opacity:0;transform:scale(.94) translateY(10px)}to{opacity:1;transform:none}}@keyframes splashOut{to{opacity:0;visibility:hidden;transform:scale(1.04)}}@keyframes spark{0%,100%{opacity:.15;transform:scale(.5)}50%{opacity:1;transform:scale(1.5)}}
 @media(max-width:520px){.grid{grid-template-columns:1fr}.wrap{padding-left:12px;padding-right:70px}.contact-dock{right:8px}.brand{font-size:25px}.splash-title{font-size:34px}}
 
-.video-bg{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:-3;pointer-events:none;background:#02040a}
-.video-overlay{position:fixed;inset:0;background:linear-gradient(180deg,rgba(2,4,10,.48),rgba(2,4,10,.72));z-index:-2;pointer-events:none}
+.video-bg{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;pointer-events:none;background:#02040a}
+.video-overlay{position:fixed;inset:0;background:linear-gradient(180deg,rgba(2,4,10,.42),rgba(2,4,10,.68));z-index:1;pointer-events:none}
+
+/* Full-screen video background: visible from app launch through the entire app */
+body{background:transparent!important}
+#bgVideo{display:block;object-fit:cover;object-position:center center}
+
+#brandLogo{cursor:pointer;user-select:none;-webkit-user-select:none}
+#shopName{cursor:pointer;user-select:none;-webkit-user-select:none}
+#appView{visibility:hidden;opacity:0;transition:opacity .35s ease}
+body:not(.app-ready) .top,body:not(.app-ready) .contact-dock,body:not(.app-ready) .footer{visibility:hidden;opacity:0}
+body.app-ready .top,body.app-ready .contact-dock,body.app-ready .footer{visibility:visible;opacity:1}
+#appView.ready{visibility:visible;opacity:1}
 </style>
 </head>
 <body>
@@ -68,60 +79,16 @@ input:focus{border-color:#4f92ff;box-shadow:0 0 0 3px rgba(40,120,255,.13)}
     <div class="logo-mark">HÍ</div>
     <div class="splash-title">HÍ BLACK</div>
     <div class="splash-sub">UY TÍN • NHANH CHÓNG • AN TOÀN</div>
-    <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
-    <div id="percent" class="percent">0%</div>
+    <div class="progress-track"><div id="progressBar" class="progress-bar" style="width:1%"></div></div>
+    <div id="percent" class="percent">1%</div>
   </div>
 </div>
 
-<!-- Zalo + TikTok -->
-<div class="contact-dock">
-  <a class="contact-btn zalo" href="https://zalo.me/0964927528" target="_blank" rel="noopener" aria-label="Zalo">
-    <span>Zalo</span><em class="contact-label">0964927528</em>
-  </a>
-  <a class="contact-btn tiktok" href="https://www.tiktok.com/@.hiblack" target="_blank" rel="noopener" aria-label="TikTok">
-    <span>♪</span><em class="contact-label">TikTok @.hiblack</em>
-  </a>
-</div>
-
-<div class="wrap">
-  <div class="top">
-    <div class="brand" id="shopName">Hí Black</div>
-    <div class="pill" id="status">Chưa đăng nhập</div>
-  </div>
-
-  <section id="authView" class="card hero">
-    <h1>Shop key tự động</h1>
-    <p class="muted">Đăng nhập để xem sản phẩm, số dư và mua key.</p>
-    <div class="tabs">
-      <button id="loginTab" class="active" onclick="showAuth('login')">Đăng nhập</button>
-      <button id="registerTab" onclick="showAuth('register')">Đăng ký</button>
-    </div>
-    <div id="loginForm">
-      <label>Email</label><input id="loginEmail" type="email" autocomplete="email" placeholder="email@example.com">
-      <label>Mật khẩu</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="••••••••">
-      <button class="btn" onclick="login()">Đăng nhập</button>
-    </div>
-    <div id="registerForm" class="hide">
-      <label>Tên</label><input id="regName" placeholder="Tên của bạn">
-      <label>Email</label><input id="regEmail" type="email" autocomplete="email" placeholder="email@example.com">
-      <label>Mật khẩu</label><input id="regPassword" type="password" autocomplete="new-password" placeholder="Tối thiểu 6 ký tự">
-      <button class="btn" onclick="registerUser()">Tạo tài khoản</button>
-    </div>
-    <div id="authMsg"></div>
-  </section>
-
-  <section id="appView" class="hide">
-    <div class="card hero">
-      <div class="row"><div><div class="muted small">Xin chào</div><h2 id="userName">-</h2></div>
-        <button class="btn alt" style="width:auto;margin:0" onclick="logout()">Thoát</button></div>
-      <div class="row" style="margin-top:14px"><div><div class="muted small">Số dư</div><div class="price" id="balance">0đ</div></div>
-        <button class="btn blue" style="width:auto;margin:0" onclick="topup()">Nạp tiền</button></div>
-    </div>
-
+    <section id="appView">
+    <div class="top"><div class="brand" id="shopName">Hí Black</div></div>
     <div class="tabs">
       <button id="productsTab" class="active" onclick="showSection('products')">Sản phẩm</button>
-      <button onclick="showSection('orders')">Đơn hàng</button>
-      <button id="adminTab" class="hide" onclick="showSection('admin')">Admin</button>
+      
     </div>
 
     <section id="productsSection">
@@ -143,7 +110,6 @@ input:focus{border-color:#4f92ff;box-shadow:0 0 0 3px rgba(40,120,255,.13)}
     </section>
   </section>
 
-  <div class="footer">Hí Black • Shop tự động 24/7 • Zalo hỗ trợ: 0964927528</div>
 </div>
 
 <!-- QR payment modal -->
@@ -188,9 +154,13 @@ async function api(path, options={}){
   let data={}; try{data=JSON.parse(text)}catch{data={error:text}}
   if(!r.ok) throw new Error(data.error||'Có lỗi xảy ra'); return data;
 }
-async function boot(){
-  try{const c=await api('/api/config');$('shopName').textContent=c.shopName||'Hí Black';document.title=c.shopName||'Hí Black'}catch{}
-  if(token){try{await refreshMe();enterApp()}catch{logout(false)}}
+async async function boot(){
+  try{
+    const c=await api('/api/config');
+    if($('shopName')) $('shopName').textContent=c.shopName||'Hí Black';
+    document.title=c.shopName||'Hí Black';
+  }catch{}
+  loadProducts();
 }
 async function login(){
   msg('authMsg','');
@@ -207,7 +177,7 @@ function enterApp(){
   $('authView').classList.add('hide');$('appView').classList.remove('hide');$('status').textContent=me.role==='admin'?'ADMIN':'Đã đăng nhập';
   $('userName').textContent=me.name;$('balance').textContent=money(me.balance);$('adminTab').classList.toggle('hide',me.role!=='admin');loadProducts();
 }
-function logout(clear=true){if(clear){token='';localStorage.removeItem('hb_token')}me=null;$('appView').classList.add('hide');$('authView').classList.remove('hide');$('status').textContent='Chưa đăng nhập'}
+function logout(clear=true){if(clear){token='';localStorage.removeItem('hb_token')}me=null;$('appView').classList.add('hide');$('authView').classList.remove('hide');$('status').textContent=''}
 
 async function loadProducts(){
   $('products').innerHTML='<div class="loading">Đang tải sản phẩm...</div>';
@@ -218,7 +188,7 @@ async function loadProducts(){
       <div><h3>${escapeHtml(p.name)}</h3><div class="muted small">ID: ${escapeHtml(p.id)}</div><div class="price">${money(p.price)}</div><div class="stock">● Kho: ${Number(p.stock)||0}</div></div>
       <button class="btn blue" onclick='openPay(${JSON.stringify(p).replace(/'/g,"&#039;")})'>Mua ngay →</button>
     </div>`).join('');
-  }catch(e){$('products').innerHTML=`<div class="notice err">${escapeHtml(e.message)}</div>`}
+  }catch(e){$('products').innerHTML=`<div class="notice err">Không tải được sản phẩm: ${escapeHtml(e.message)}</div>`}
 }
 
 function openPay(p){
@@ -262,13 +232,21 @@ async function approve(topupId,userId,amount){
 }
 
 /* Splash: intentionally completes 0 -> 100 before showing the app */
-let progress=0;
+let progress=1;
 const timer=setInterval(()=>{
   progress=Math.min(100,progress+(progress<70?4:2));
   $('progressBar').style.width=progress+'%';$('percent').textContent=progress+'%';
   if(progress>=100){
     clearInterval(timer);
-    setTimeout(()=>{$('splash').classList.add('hideSplash');document.body.style.overflow='';boot()},250);
+    $('progressBar').style.width='100%';
+    $('percent').textContent='100%';
+    setTimeout(()=>{
+      document.body.classList.add('app-ready');
+      $('appView').classList.add('ready');
+      $('splash').classList.add('hideSplash');
+      document.body.style.overflow='';
+      boot();
+    },220);
   }
 },45);
 document.body.style.overflow='hidden';
@@ -284,5 +262,25 @@ document.body.style.overflow='hidden';
   document.addEventListener('click',play,{once:true});
 })();
 </script>
+
+<div id="hiddenAdmin" class="modal hide">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div><div class="muted small">Khu vực riêng</div><h2 style="margin:4px 0">Quản trị Hí Black</h2></div>
+      <button class="close" onclick="closeHiddenAdmin()">×</button>
+    </div>
+    <div id="adminLoginBox">
+      <p class="muted small">Nhập mật khẩu quản trị để mở cài đặt.</p>
+      <input id="hiddenAdminPass" type="password" placeholder="Mật khẩu quản trị">
+      <button class="btn blue" onclick="unlockHiddenAdmin()">Mở quản trị</button>
+      <div id="hiddenAdminMsg"></div>
+    </div>
+    <div id="adminUnlocked" class="hide">
+      <div class="notice ok">Đã mở quyền quản trị.</div>
+      <p class="muted small">Khu vực quản trị đã được xác thực. Các chức năng quản lý giá/sản phẩm có thể kết nối với API quản trị khi backend được bật.</p>
+      <button class="btn alt" onclick="closeHiddenAdmin()">Đóng</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
