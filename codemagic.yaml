@@ -40,7 +40,17 @@ workflows:
       - name: Build unsigned iOS app
         script: |
           rm -rf "$CM_BUILD_DIR/build/ios"
-          xcodebuild             -workspace "$CM_BUILD_DIR/ios/App/App.xcworkspace"             -scheme "App"             -configuration Release             -sdk iphoneos             -destination 'generic/platform=iOS'             -derivedDataPath "$CM_BUILD_DIR/build/ios"             CODE_SIGN_IDENTITY=""             CODE_SIGNING_REQUIRED=NO             CODE_SIGNING_ALLOWED=NO             build
+          xcodebuild \
+            -workspace "$CM_BUILD_DIR/ios/App/App.xcworkspace" \
+            -scheme "App" \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath "$CM_BUILD_DIR/build/ios" \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            build
 
       - name: Package unsigned IPA
         script: |
@@ -51,15 +61,17 @@ workflows:
           mkdir -p "$CM_BUILD_DIR/build/ios/ipa/Payload"
           cp -R "$APP_PATH" "$CM_BUILD_DIR/build/ios/ipa/Payload/App.app"
           cd "$CM_BUILD_DIR/build/ios/ipa"
-          zip -qry "Hí-Black-unsigned.ipa" Payload
+          zip -qry "Hi-Black-unsigned.ipa" Payload
           rm -rf Payload
+
       - name: Create downloadable ZIP
         script: |
           set -e
           cd "$CM_BUILD_DIR/build/ios/ipa"
-          zip -qry "Hi-Black-unsigned.zip" "Hí-Black-unsigned.ipa"
-    artifacts:
+          zip -qry "Hi-Black-unsigned.zip" "Hi-Black-unsigned.ipa"
 
-        - build/ios/ipa/*.zip
+    artifacts:
+      - build/ios/ipa/*.zip
       - /tmp/xcodebuild_logs/*.log
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+      
