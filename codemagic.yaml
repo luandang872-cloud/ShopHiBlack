@@ -53,7 +53,11 @@ workflows:
           cd "$CM_BUILD_DIR/build/ios/ipa"
           zip -qry "Hí-Black-unsigned.ipa" Payload
           rm -rf Payload
-
+      - name: Create downloadable ZIP
+        script: |
+          set -e
+          cd "$CM_BUILD_DIR/build/ios/ipa"
+          zip -qry "Hi-Black-unsigned.zip" "Hí-Black-unsigned.ipa"
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
