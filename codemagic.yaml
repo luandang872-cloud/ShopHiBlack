@@ -1,4 +1,4 @@
-
+workflows:
   ios-hiblack:
     name: Hí Black iOS Unsigned
     max_build_duration: 120
