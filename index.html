@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08090d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Hí Black">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>Hí Black Shop</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bg"></div>
+<header>
+  <div class="logo">HÍ BLACK</div>
+  <button id="cartBtn" class="ghost">🛒 Giỏ hàng <span id="cartCount">0</span></button>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div>
+    <p class="tag">SHOP DEMO • TỰ ĐỘNG</p>
+    <h1>Hí Black Shop</h1>
+    <p>Web bán hàng mẫu: đăng ký, đăng nhập, chọn sản phẩm, đặt hàng và quản lý đơn ngay trên trình duyệt.</p>
+    <button class="primary" onclick="document.querySelector('#products').scrollIntoView({behavior:'smooth'})">Xem sản phẩm</button>
+  </div>
+</section>
+
+<section id="auth" class="panel auth">
+  <div>
+    <h2>Tài khoản</h2>
+    <p id="welcome">Chưa đăng nhập</p>
+  </div>
+  <div class="auth-row">
+    <input id="username" placeholder="Tên tài khoản">
+    <input id="password" type="password" placeholder="Mật khẩu">
+    <button class="primary" onclick="register()">Đăng ký</button>
+    <button class="ghost" onclick="login()">Đăng nhập</button>
+    <button class="danger" onclick="logout()">Đăng xuất</button>
+  </div>
+  <small>Demo này lưu dữ liệu cục bộ trên máy. Chưa kết nối thanh toán/API thật.</small>
+</section>
+
+<section id="products">
+<h2>Sản phẩm</h2>
+<div id="productGrid" class="grid"></div>
+</section>
+
+<section class="panel">
+<h2>Đơn hàng của bạn</h2>
+<div id="orders"></div>
+</section>
+</main>
+
+<div id="modal" class="modal hidden">
+  <div class="modal-box">
+    <button class="close" onclick="closeModal()">×</button>
+    <h2>Thanh toán / Đặt hàng</h2>
+    <div id="checkout"></div>
+  </div>
+</div>
+<script src="app.js"></script>
+<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js");</script>
+</body>
+</html>
