@@ -1,67 +1,93 @@
 <!doctype html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>Hí Black</title>
-  <style>
-    *{box-sizing:border-box}body{margin:0;background:#090909;color:#f5f5f5;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-    button,input{font:inherit}button{cursor:pointer}.wrap{max-width:720px;margin:auto;padding:18px 14px 40px}
-    .top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
-    .brand{font-size:28px;font-weight:900;letter-spacing:-1px}.pill{border:1px solid #333;border-radius:999px;padding:7px 11px;font-size:12px;color:#aaa}
-    .card{background:#111;border:1px solid #292929;border-radius:18px;padding:16px;margin:12px 0}
-    .hero{padding:22px;background:linear-gradient(135deg,#171717,#0d0d0d);border-color:#333}
-    h1,h2,h3,p{margin-top:0}.muted{color:#999}.small{font-size:13px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    input{width:100%;background:#0b0b0b;border:1px solid #333;color:#fff;border-radius:12px;padding:13px;margin:6px 0 10px;outline:none}
-    input:focus{border-color:#777}.btn{width:100%;border:0;border-radius:12px;padding:13px;background:#fff;color:#000;font-weight:800;margin-top:6px}
-    .btn.alt{background:#1d1d1d;color:#fff;border:1px solid #333}.btn.danger{background:#3a1111;color:#fff;border:1px solid #612020}
-    .tabs{display:flex;gap:8px;overflow:auto;margin:12px 0}.tabs button{white-space:nowrap;border:1px solid #333;background:#111;color:#bbb;border-radius:999px;padding:9px 13px}
-    .tabs button.active{background:#fff;color:#000}.product{display:flex;flex-direction:column;justify-content:space-between;min-height:170px}
-    .price{font-size:20px;font-weight:900;margin:8px 0}.stock{font-size:12px;color:#8f8}.row{display:flex;justify-content:space-between;gap:10px;align-items:center}
-    .hide{display:none!important}.notice{padding:12px;border-radius:12px;background:#171717;border:1px solid #303030;margin:10px 0}
-    .ok{color:#8f8}.err{color:#ff8c8c}.key{white-space:pre-wrap;word-break:break-word;background:#050505;border:1px dashed #555;border-radius:12px;padding:12px;margin-top:8px}
-    .loading{text-align:center;color:#999;padding:24px}.footer{text-align:center;color:#666;font-size:12px;padding:20px 0}
-    @media(max-width:520px){.grid{grid-template-columns:1fr}.wrap{padding-left:12px;padding-right:12px}}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#05070d">
+<title>Hí Black</title>
+<style>
+*{box-sizing:border-box}
+:root{--bg:#05070d;--panel:rgba(12,16,27,.82);--line:rgba(77,135,255,.28);--blue:#2878ff;--blue2:#6da7ff;--text:#f7f9ff;--muted:#9ba8bf}
+html,body{margin:0;min-height:100%;background:rgba(2,4,10,.18);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{overflow-x:hidden}
+button,input{font:inherit}button{cursor:pointer}
+.bg-orb{position:fixed;border-radius:50%;filter:blur(70px);opacity:.35;pointer-events:none;z-index:0}
+.orb1{width:240px;height:240px;background:#1464ff;top:-80px;right:-80px}.orb2{width:220px;height:220px;background:#003bff;bottom:5%;left:-110px}
+.wrap{position:relative;z-index:1;max-width:760px;margin:auto;padding:18px 14px 50px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.brand{font-size:28px;font-weight:950;letter-spacing:-1.5px;text-shadow:0 0 22px rgba(52,126,255,.55)}
+.pill{border:1px solid var(--line);background:rgba(7,12,23,.7);backdrop-filter:blur(14px);border-radius:999px;padding:8px 12px;font-size:12px;color:#b9c9e6}
+.card{background:linear-gradient(145deg,rgba(18,23,37,.88),rgba(7,10,17,.92));border:1px solid rgba(104,145,220,.2);border-radius:22px;padding:18px;margin:12px 0;box-shadow:0 16px 50px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.04);backdrop-filter:blur(18px)}
+.hero{padding:24px;background:radial-gradient(circle at 85% 15%,rgba(35,117,255,.2),transparent 35%),linear-gradient(145deg,rgba(17,26,47,.94),rgba(7,9,15,.96));border-color:rgba(71,132,255,.32)}
+h1,h2,h3,p{margin-top:0}.muted{color:var(--muted)}.small{font-size:13px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+input{width:100%;background:#060912;border:1px solid #26334c;color:#fff;border-radius:14px;padding:14px;margin:6px 0 10px;outline:none}
+input:focus{border-color:#4f92ff;box-shadow:0 0 0 3px rgba(40,120,255,.13)}
+.btn{width:100%;border:0;border-radius:14px;padding:14px;background:linear-gradient(135deg,#fff,#dfeaff);color:#05070d;font-weight:900;margin-top:7px;box-shadow:0 8px 22px rgba(0,0,0,.22);transition:.2s}
+.btn:hover{transform:translateY(-1px)}.btn.alt{background:rgba(17,24,38,.9);color:#fff;border:1px solid #2a3b59}.btn.blue{background:linear-gradient(135deg,#2273ff,#54a0ff);color:#fff}
+.tabs{display:flex;gap:8px;overflow:auto;margin:14px 0}.tabs button{white-space:nowrap;border:1px solid #29364e;background:#090e19;color:#9eabc1;border-radius:999px;padding:10px 14px}.tabs button.active{background:#fff;color:#000}
+.product{display:flex;flex-direction:column;justify-content:space-between;min-height:190px;position:relative;overflow:hidden}
+.product:before{content:"";position:absolute;inset:-80px auto auto -80px;width:170px;height:170px;border-radius:50%;background:rgba(40,120,255,.12);filter:blur(20px)}
+.product>*{position:relative}.product h3{margin-bottom:7px}.price{font-size:21px;font-weight:950;margin:9px 0}.stock{font-size:12px;color:#7fe3a3}
+.row{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.hide{display:none!important}.notice{padding:12px 14px;border-radius:14px;background:#0b101c;border:1px solid #273650;margin:10px 0}.ok{color:#8ff0b1}.err{color:#ff9caa}
+.key{white-space:pre-wrap;word-break:break-word;background:#03050a;border:1px dashed #42536f;border-radius:12px;padding:12px;margin-top:8px}
+.loading{text-align:center;color:#93a1b9;padding:24px}.footer{text-align:center;color:#68758c;font-size:12px;padding:24px 0}
+.contact-dock{position:fixed;right:12px;top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;gap:10px}
+.contact-btn{width:50px;height:50px;border-radius:16px;border:1px solid rgba(255,255,255,.18);color:#fff;font-weight:950;box-shadow:0 10px 28px rgba(0,0,0,.4);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:.2s}
+.contact-btn:hover{transform:scale(1.06)}.zalo{background:linear-gradient(145deg,#087cff,#0051c8)}.tiktok{background:linear-gradient(145deg,#20232b,#050609)}
+.contact-btn span{font-size:11px}.contact-label{position:absolute;right:58px;background:#0b101a;border:1px solid #293851;border-radius:10px;padding:6px 9px;font-size:11px;white-space:nowrap;opacity:0;pointer-events:none;transition:.2s}.contact-btn:hover .contact-label{opacity:1}
+.modal{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(0,0,0,.78);backdrop-filter:blur(14px)}
+.modal-box{width:min(460px,100%);max-height:92vh;overflow:auto;background:linear-gradient(145deg,#10192a,#05070c);border:1px solid rgba(75,137,255,.5);border-radius:26px;padding:18px;box-shadow:0 30px 100px rgba(0,0,0,.65);animation:pop .3s ease}
+.modal-head{display:flex;justify-content:space-between;align-items:center;gap:10px}.close{width:40px;height:40px;border-radius:12px;border:1px solid #30415e;background:#0a101b;color:#fff;font-size:22px}
+.qr-wrap{margin:14px auto;padding:10px;border-radius:20px;background:#fff;max-width:350px;box-shadow:0 0 40px rgba(46,125,255,.2)}.qr-wrap img{display:block;width:100%;height:auto;border-radius:12px}.pay-note{text-align:center;color:#a9b7cd;font-size:13px;margin:10px 4px 0}
+.splash{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#02040a}
+.splash.hideSplash{animation:splashOut .7s ease forwards}
+.splash-inner{text-align:center;width:min(420px,90%);position:relative}
+.logo-mark{width:104px;height:104px;margin:0 auto 20px;border-radius:30px;background:linear-gradient(145deg,#0e1830,#02040a);border:1px solid #397cff;box-shadow:0 0 70px rgba(38,119,255,.4),inset 0 0 35px rgba(47,121,255,.15);display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:950;color:#fff;animation:float 2.4s ease-in-out infinite}
+.splash-title{font-size:38px;font-weight:1000;letter-spacing:-2px;margin-bottom:5px;text-shadow:0 0 30px rgba(76,145,255,.7)}
+.splash-sub{color:#9bb7e6;margin-bottom:24px}.progress-track{height:8px;border-radius:999px;background:#111827;overflow:hidden;border:1px solid #23324d}.progress-bar{height:100%;width:0;background:linear-gradient(90deg,#1d6dff,#8ec2ff);box-shadow:0 0 18px #3d8cff;transition:width .06s linear}.percent{margin-top:10px;font-weight:900;color:#dce9ff}
+.sparks{position:absolute;inset:-40px;pointer-events:none}.spark{position:absolute;width:4px;height:4px;background:#fff;border-radius:50%;box-shadow:0 0 12px #5aa2ff;animation:spark 2s infinite}
+.s1{left:10%;top:20%}.s2{left:85%;top:15%;animation-delay:.4s}.s3{left:18%;top:75%;animation-delay:.8s}.s4{left:78%;top:70%;animation-delay:1.2s}
+@keyframes float{50%{transform:translateY(-8px) rotate(2deg)}}@keyframes pop{from{opacity:0;transform:scale(.94) translateY(10px)}to{opacity:1;transform:none}}@keyframes splashOut{to{opacity:0;visibility:hidden;transform:scale(1.04)}}@keyframes spark{0%,100%{opacity:.15;transform:scale(.5)}50%{opacity:1;transform:scale(1.5)}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.wrap{padding-left:12px;padding-right:70px}.contact-dock{right:8px}.brand{font-size:25px}.splash-title{font-size:34px}}
 
-    .contact-card{position:relative;overflow:hidden;background:linear-gradient(145deg,#101a33,#0b0d14);border-color:#1f5eff}
-    .contact-title{font-size:18px;font-weight:900;margin-bottom:6px}
-    .contact-sub{color:#aab4cc;font-size:13px;margin-bottom:14px}
-    .contact-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .social-btn{display:flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;border-radius:12px;padding:12px;font-weight:900;border:1px solid #303030}
-    .social-btn.zalo{background:#087cff;color:#fff;border-color:#087cff}
-    .social-btn.tiktok{background:#111;color:#fff;border-color:#444}
-    .social-icon{width:25px;height:25px;display:grid;place-items:center;border-radius:8px;background:rgba(255,255,255,.16);font-size:12px}
-    .qr-wrap{margin-top:14px;text-align:center;background:#05070d;border:1px solid #1f5eff;border-radius:16px;padding:10px}
-    .qr-wrap img{display:block;width:100%;max-width:520px;margin:auto;border-radius:10px}
-    .qr-note{color:#9aa6bf;font-size:12px;margin:9px 0 0}
-    @media(max-width:520px){.contact-actions{grid-template-columns:1fr}}
-  </style>
+.video-bg{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:-3;pointer-events:none;background:#02040a}
+.video-overlay{position:fixed;inset:0;background:linear-gradient(180deg,rgba(2,4,10,.48),rgba(2,4,10,.72));z-index:-2;pointer-events:none}
+</style>
 </head>
 <body>
+<video id="bgVideo" class="video-bg" autoplay muted loop playsinline webkit-playsinline preload="auto"><source src="hiblack-bg.mp4" type="video/mp4"></video>
+<div class="video-overlay"></div>
+<div class="bg-orb orb1"></div><div class="bg-orb orb2"></div>
+
+<!-- Splash loading 0 -> 100% -->
+<div id="splash" class="splash">
+  <div class="sparks"><i class="spark s1"></i><i class="spark s2"></i><i class="spark s3"></i><i class="spark s4"></i></div>
+  <div class="splash-inner">
+    <div class="logo-mark">HÍ</div>
+    <div class="splash-title">HÍ BLACK</div>
+    <div class="splash-sub">UY TÍN • NHANH CHÓNG • AN TOÀN</div>
+    <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+    <div id="percent" class="percent">0%</div>
+  </div>
+</div>
+
+<!-- Zalo + TikTok -->
+<div class="contact-dock">
+  <a class="contact-btn zalo" href="https://zalo.me/0964927528" target="_blank" rel="noopener" aria-label="Zalo">
+    <span>Zalo</span><em class="contact-label">0964927528</em>
+  </a>
+  <a class="contact-btn tiktok" href="https://www.tiktok.com/@.hiblack" target="_blank" rel="noopener" aria-label="TikTok">
+    <span>♪</span><em class="contact-label">TikTok @.hiblack</em>
+  </a>
+</div>
+
 <div class="wrap">
   <div class="top">
     <div class="brand" id="shopName">Hí Black</div>
     <div class="pill" id="status">Chưa đăng nhập</div>
   </div>
-
-  <section class="card contact-card">
-    <div class="contact-title">💳 Thanh toán & liên hệ Hí Black</div>
-    <div class="contact-sub">Quét QR để thanh toán hoặc liên hệ trực tiếp qua Zalo / TikTok.</div>
-
-    <div class="contact-actions">
-      <a class="social-btn zalo" href="https://zalo.me/0964927528" target="_blank" rel="noopener noreferrer">
-        <span class="social-icon">Z</span> Zalo 0964927528
-      </a>
-      <a class="social-btn tiktok" href="https://www.tiktok.com/@.hiblack" target="_blank" rel="noopener noreferrer">
-        <span class="social-icon">♪</span> TikTok @.hiblack
-      </a>
-    </div>
-
-    <div class="qr-wrap">
-      <img src="payment-qr.jpg" alt="QR thanh toán Hí Black">
-      <div class="qr-note">QR thanh toán chính thức của Hí Black</div>
-    </div>
-  </section>
 
   <section id="authView" class="card hero">
     <h1>Shop key tự động</h1>
@@ -70,13 +96,11 @@
       <button id="loginTab" class="active" onclick="showAuth('login')">Đăng nhập</button>
       <button id="registerTab" onclick="showAuth('register')">Đăng ký</button>
     </div>
-
     <div id="loginForm">
       <label>Email</label><input id="loginEmail" type="email" autocomplete="email" placeholder="email@example.com">
       <label>Mật khẩu</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="••••••••">
       <button class="btn" onclick="login()">Đăng nhập</button>
     </div>
-
     <div id="registerForm" class="hide">
       <label>Tên</label><input id="regName" placeholder="Tên của bạn">
       <label>Email</label><input id="regEmail" type="email" autocomplete="email" placeholder="email@example.com">
@@ -91,7 +115,7 @@
       <div class="row"><div><div class="muted small">Xin chào</div><h2 id="userName">-</h2></div>
         <button class="btn alt" style="width:auto;margin:0" onclick="logout()">Thoát</button></div>
       <div class="row" style="margin-top:14px"><div><div class="muted small">Số dư</div><div class="price" id="balance">0đ</div></div>
-        <button class="btn" style="width:auto;margin:0" onclick="topup()">Nạp tiền</button></div>
+        <button class="btn blue" style="width:auto;margin:0" onclick="topup()">Nạp tiền</button></div>
     </div>
 
     <div class="tabs">
@@ -119,7 +143,22 @@
     </section>
   </section>
 
-  <div class="footer">Hí Black • Shop tự động 24/7</div>
+  <div class="footer">Hí Black • Shop tự động 24/7 • Zalo hỗ trợ: 0964927528</div>
+</div>
+
+<!-- QR payment modal -->
+<div id="payModal" class="modal hide">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div><div class="muted small">Thanh toán đơn hàng</div><h2 id="payTitle" style="margin:4px 0">Hí Black</h2></div>
+      <button class="close" onclick="closePay()">×</button>
+    </div>
+    <div class="notice"><b id="payAmount">0đ</b><br><span class="muted small">Quét mã QR bên dưới để thanh toán.</span></div>
+    <div class="qr-wrap"><img src="payment-qr.jpg" alt="QR thanh toán Hí Black"></div>
+    <div class="pay-note">Thanh toán xong, bấm <b>Lấy key</b> để mở Zalo hỗ trợ.</div>
+    <button class="btn blue" onclick="getKeyOnZalo()">💬 Lấy key qua Zalo</button>
+    <button class="btn alt" onclick="closePay()">Đóng</button>
+  </div>
 </div>
 
 <script>
@@ -127,18 +166,11 @@ const $ = id => document.getElementById(id);
 const money = n => new Intl.NumberFormat('vi-VN').format(Number(n)||0) + 'đ';
 let token = localStorage.getItem('hb_token') || '';
 let me = null;
+let selectedProduct = null;
 
-async function api(path, options={}) {
-  const headers = {'Content-Type':'application/json', ...(options.headers||{})};
-  if(token) headers.Authorization = 'Bearer ' + token;
-  const r = await fetch(path,{...options,headers});
-  const text = await r.text();
-  let data={}; try{data=JSON.parse(text)}catch{data={error:text}};
-  if(!r.ok) throw new Error(data.error || 'Có lỗi xảy ra');
-  return data;
-}
-function msg(id,text,type=''){ $(id).innerHTML = text ? `<div class="notice ${type}">${escapeHtml(text)}</div>` : ''; }
 function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function msg(id,text,type=''){ $(id).innerHTML = text ? `<div class="notice ${type}">${escapeHtml(text)}</div>` : ''; }
+
 function showAuth(which){
   $('loginForm').classList.toggle('hide',which!=='login'); $('registerForm').classList.toggle('hide',which!=='register');
   $('loginTab').classList.toggle('active',which==='login'); $('registerTab').classList.toggle('active',which==='register'); msg('authMsg','');
@@ -149,49 +181,62 @@ function showSection(which){
   $('adminSection').classList.toggle('hide',which!=='admin');
   if(which==='orders') loadOrders(); if(which==='products') loadProducts(); if(which==='admin') loadAdmin();
 }
+async function api(path, options={}){
+  const headers={'Content-Type':'application/json',...(options.headers||{})};
+  if(token) headers.Authorization='Bearer '+token;
+  const r=await fetch(path,{...options,headers}); const text=await r.text();
+  let data={}; try{data=JSON.parse(text)}catch{data={error:text}}
+  if(!r.ok) throw new Error(data.error||'Có lỗi xảy ra'); return data;
+}
 async function boot(){
-  try{ const c=await api('/api/config'); $('shopName').textContent=c.shopName||'Hí Black'; document.title=c.shopName||'Hí Black'; }catch{}
-  if(token){try{await refreshMe(); enterApp()}catch{logout(false)}}
+  try{const c=await api('/api/config');$('shopName').textContent=c.shopName||'Hí Black';document.title=c.shopName||'Hí Black'}catch{}
+  if(token){try{await refreshMe();enterApp()}catch{logout(false)}}
 }
 async function login(){
   msg('authMsg','');
-  try{const d=await api('/api/login',{method:'POST',body:JSON.stringify({email:$('loginEmail').value,password:$('loginPassword').value})}); token=d.token; localStorage.setItem('hb_token',token); me=d.user; enterApp()}
+  try{const d=await api('/api/login',{method:'POST',body:JSON.stringify({email:$('loginEmail').value,password:$('loginPassword').value})});token=d.token;localStorage.setItem('hb_token',token);me=d.user;enterApp()}
   catch(e){msg('authMsg',e.message,'err')}
 }
 async function registerUser(){
   msg('authMsg','');
-  try{const d=await api('/api/register',{method:'POST',body:JSON.stringify({name:$('regName').value,email:$('regEmail').value,password:$('regPassword').value})}); token=d.token; localStorage.setItem('hb_token',token); me=d.user; enterApp()}
+  try{const d=await api('/api/register',{method:'POST',body:JSON.stringify({name:$('regName').value,email:$('regEmail').value,password:$('regPassword').value})});token=d.token;localStorage.setItem('hb_token',token);me=d.user;enterApp()}
   catch(e){msg('authMsg',e.message,'err')}
 }
 async function refreshMe(){me=await api('/api/me')}
 function enterApp(){
-  $('authView').classList.add('hide'); $('appView').classList.remove('hide'); $('status').textContent=me.role==='admin'?'ADMIN':'Đã đăng nhập';
-  $('userName').textContent=me.name; $('balance').textContent=money(me.balance);
-  $('adminTab').classList.toggle('hide',me.role!=='admin'); loadProducts();
+  $('authView').classList.add('hide');$('appView').classList.remove('hide');$('status').textContent=me.role==='admin'?'ADMIN':'Đã đăng nhập';
+  $('userName').textContent=me.name;$('balance').textContent=money(me.balance);$('adminTab').classList.toggle('hide',me.role!=='admin');loadProducts();
 }
-function logout(clear=true){if(clear){token='';localStorage.removeItem('hb_token')}me=null;$('appView').classList.add('hide');$('authView').classList.remove('hide');$('status').textContent='Chưa đăng nhập';}
+function logout(clear=true){if(clear){token='';localStorage.removeItem('hb_token')}me=null;$('appView').classList.add('hide');$('authView').classList.remove('hide');$('status').textContent='Chưa đăng nhập'}
+
 async function loadProducts(){
   $('products').innerHTML='<div class="loading">Đang tải sản phẩm...</div>';
   try{
-    const d=await api('/api/products'); const arr=d.products||[];
+    const d=await api('/api/products');const arr=d.products||[];
     if(!arr.length){$('products').innerHTML='<div class="notice">Chưa có sản phẩm hoặc API chưa trả dữ liệu.</div>';return}
     $('products').innerHTML=arr.map(p=>`<div class="card product">
-      <div><h3>${escapeHtml(p.name)}</h3><div class="muted small">ID: ${escapeHtml(p.id)}</div><div class="price">${money(p.price)}</div><div class="stock">Kho: ${Number(p.stock)||0}</div></div>
-      <button class="btn" onclick='buy(${JSON.stringify(p).replace(/'/g,"&#039;")})'>Mua ngay</button>
+      <div><h3>${escapeHtml(p.name)}</h3><div class="muted small">ID: ${escapeHtml(p.id)}</div><div class="price">${money(p.price)}</div><div class="stock">● Kho: ${Number(p.stock)||0}</div></div>
+      <button class="btn blue" onclick='openPay(${JSON.stringify(p).replace(/'/g,"&#039;")})'>Mua ngay →</button>
     </div>`).join('');
   }catch(e){$('products').innerHTML=`<div class="notice err">${escapeHtml(e.message)}</div>`}
 }
-async function buy(p){
-  const qty=Number(prompt('Số lượng muốn mua:', '1'));
-  if(!Number.isInteger(qty)||qty<1)return;
-  if(!confirm(`Mua ${qty} x ${p.name} = ${money(Number(p.price)*qty)}?`))return;
-  try{
-    const d=await api('/api/buy',{method:'POST',body:JSON.stringify({product_id:p.id,quantity:qty,price:p.price,product_name:p.name})});
-    me.balance=d.balance;$('balance').textContent=money(me.balance);
-    alert('Mua thành công!\\n\\nKey:\\n'+(d.order?.key||'Đã tạo đơn'));
-    loadOrders();
-  }catch(e){alert(e.message)}
+
+function openPay(p){
+  selectedProduct=p;
+  $('payTitle').textContent=p.name||'Hí Black';
+  $('payAmount').textContent=money(Number(p.price));
+  $('payModal').classList.remove('hide');
+  document.body.style.overflow='hidden';
 }
+function closePay(){$('payModal').classList.add('hide');document.body.style.overflow=''}
+function getKeyOnZalo(){
+  const name=selectedProduct?.name||'sản phẩm';
+  const amount=selectedProduct?.price?money(selectedProduct.price):'';
+  const text=encodeURIComponent(`Hí Black - Tôi đã thanh toán ${name} ${amount}. Cho tôi xin key.`);
+  window.location.href='https://zalo.me/0964927528';
+  setTimeout(()=>{window.open('https://zalo.me/0964927528?text='+text,'_blank')},300);
+}
+
 async function topup(){
   const amount=Number(prompt('Nhập số tiền muốn nạp (tối thiểu 1.000đ):','100000'));
   if(!Number.isFinite(amount)||amount<1000)return;
@@ -200,7 +245,7 @@ async function topup(){
 }
 async function loadOrders(){
   $('orders').innerHTML='<div class="loading">Đang tải...</div>';
-  try{const arr=await api('/api/orders'); if(!arr.length){$('orders').innerHTML='<div class="notice">Chưa có đơn hàng.</div>';return}
+  try{const arr=await api('/api/orders');if(!arr.length){$('orders').innerHTML='<div class="notice">Chưa có đơn hàng.</div>';return}
     $('orders').innerHTML=arr.map(o=>`<div class="card"><div class="row"><b>${escapeHtml(o.productName)}</b><span class="muted small">${escapeHtml(o.status)}</span></div><p class="muted small">Mã: ${escapeHtml(o.id)} • SL: ${o.quantity} • ${money(o.total)}</p><div class="key">${escapeHtml(o.key||'Chưa có key')}</div></div>`).join('');
   }catch(e){$('orders').innerHTML=`<div class="notice err">${escapeHtml(e.message)}</div>`}
 }
@@ -215,7 +260,29 @@ async function loadAdmin(){
 async function approve(topupId,userId,amount){
   try{await api('/api/admin/balance',{method:'POST',body:JSON.stringify({topupId,userId,amount})});alert('Đã duyệt');loadAdmin()}catch(e){alert(e.message)}
 }
-boot();
+
+/* Splash: intentionally completes 0 -> 100 before showing the app */
+let progress=0;
+const timer=setInterval(()=>{
+  progress=Math.min(100,progress+(progress<70?4:2));
+  $('progressBar').style.width=progress+'%';$('percent').textContent=progress+'%';
+  if(progress>=100){
+    clearInterval(timer);
+    setTimeout(()=>{$('splash').classList.add('hideSplash');document.body.style.overflow='';boot()},250);
+  }
+},45);
+document.body.style.overflow='hidden';
+</script>
+<script>
+(function(){
+  const v=document.getElementById('bgVideo');
+  if(!v) return;
+  v.muted=true; v.defaultMuted=true; v.setAttribute('playsinline',''); v.setAttribute('webkit-playsinline','');
+  const play=()=>v.play().catch(()=>{});
+  play();
+  document.addEventListener('touchstart',play,{once:true,passive:true});
+  document.addEventListener('click',play,{once:true});
+})();
 </script>
 </body>
 </html>
