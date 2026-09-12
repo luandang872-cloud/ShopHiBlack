@@ -65,6 +65,15 @@ body{background:transparent!important}
 body:not(.app-ready) .top,body:not(.app-ready) .contact-dock,body:not(.app-ready) .footer{visibility:hidden;opacity:0}
 body.app-ready .top,body.app-ready .contact-dock,body.app-ready .footer{visibility:visible;opacity:1}
 #appView.ready{visibility:visible;opacity:1}
+
+.product-row{padding:16px}
+.product-row h3{font-size:19px;margin-bottom:12px}
+.variants{display:flex;flex-direction:column;gap:9px}
+.variant{width:100%;display:flex;align-items:center;justify-content:space-between;padding:13px 15px;border-radius:14px;border:1px solid rgba(83,133,224,.25);background:rgba(5,10,20,.68);color:#eef4ff;font-size:14px}
+.variant b{font-size:15px}
+
+.contact-dock{position:fixed;right:12px;bottom:90px;z-index:20;display:flex;flex-direction:column;gap:10px}
+.contact-btn{width:64px;height:64px;border-radius:20px;display:flex;align-items:center;justify-content:center;text-decoration:none;color:white;border:1px solid rgba(255,255,255,.18);box-shadow:0 12px 30px rgba(0,0,0,.35);position:relative;transition:.2s}
 </style>
 </head>
 <body>
@@ -84,7 +93,11 @@ body.app-ready .top,body.app-ready .contact-dock,body.app-ready .footer{visibili
   </div>
 </div>
 
-    <section id="appView">
+    <div class="contact-dock">
+  <a class="contact-btn zalo" href="https://zalo.me/0964927528" target="_blank" rel="noopener"><b>Zalo</b><span class="contact-label">Zalo hỗ trợ</span></a>
+  <a class="contact-btn tiktok" href="https://www.tiktok.com/@.hiblack" target="_blank" rel="noopener"><b>♪</b><span class="contact-label">TikTok</span></a>
+</div>
+<section id="appView">
     <div class="top"><div class="brand" id="shopName">Hí Black</div></div>
     <div class="tabs">
       <button id="productsTab" class="active" onclick="showSection('products')">Sản phẩm</button>
@@ -179,16 +192,21 @@ function enterApp(){
 }
 function logout(clear=true){if(clear){token='';localStorage.removeItem('hb_token')}me=null;$('appView').classList.add('hide');$('authView').classList.remove('hide');$('status').textContent=''}
 
-async function loadProducts(){
-  $('products').innerHTML='<div class="loading">Đang tải sản phẩm...</div>';
-  try{
-    const d=await api('/api/products');const arr=d.products||[];
-    if(!arr.length){$('products').innerHTML='<div class="notice">Chưa có sản phẩm hoặc API chưa trả dữ liệu.</div>';return}
-    $('products').innerHTML=arr.map(p=>`<div class="card product">
-      <div><h3>${escapeHtml(p.name)}</h3><div class="muted small">ID: ${escapeHtml(p.id)}</div><div class="price">${money(p.price)}</div><div class="stock">● Kho: ${Number(p.stock)||0}</div></div>
-      <button class="btn blue" onclick='openPay(${JSON.stringify(p).replace(/'/g,"&#039;")})'>Mua ngay →</button>
-    </div>`).join('');
-  }catch(e){$('products').innerHTML=`<div class="notice err">Không tải được sản phẩm: ${escapeHtml(e.message)}</div>`}
+async const STATIC_PRODUCTS=[{"name": "IPA PROXY", "variants": [{"label": "1D", "price": 30000}, {"label": "7D", "price": 70000}, {"label": "30D", "price": 130000}, {"label": "3 tháng", "price": 300000}]}, {"name": "Drip menu ADR", "variants": [{"label": "1D", "price": 45000}, {"label": "7D", "price": 110000}, {"label": "30D", "price": 200000}]}, {"name": "MIGUL PRO", "variants": [{"label": "1D", "price": 80000}, {"label": "7D", "price": 215000}, {"label": "30D", "price": 450000}]}, {"name": "MIGUL LITE", "variants": [{"label": "1D", "price": 60000}, {"label": "7D", "price": 150000}, {"label": "30D", "price": 350000}]}, {"name": "5 GAME DSG", "variants": [{"label": "7D", "price": 70000}, {"label": "30D", "price": 170000}]}, {"name": "DRIP PROXY ADR", "variants": [{"label": "1D", "price": 40000}, {"label": "7D", "price": 120000}, {"label": "30D", "price": 210000}]}, {"name": "LIÊN QUAN MAP", "variants": [{"label": "1 giờ", "price": 10000}, {"label": "1D", "price": 30000}, {"label": "7D", "price": 140000}, {"label": "30D", "price": 210000}]}, {"name": "DSG GAME IPA", "variants": [{"label": "7D", "price": 140000}, {"label": "30D", "price": 220000}]}, {"name": "Flok External", "variants": [{"label": "30D", "price": 250000}]}, {"name": "Sudohax Tipa", "variants": [{"label": "30D", "price": 230000}]}];
+
+function loadProducts(){
+  const arr=STATIC_PRODUCTS;
+  $('products').innerHTML=arr.map(p=>`<div class="card product product-row">
+    <div><h3>${escapeHtml(p.name)}</h3></div>
+    <div class="variants">${p.variants.map(v=>`<button class="variant" onclick='openPay({name:${JSON.stringify(p.name+" • "+v.label)},price:${v.price}})'><span>${escapeHtml(v.label)}</span><b>${money(v.price)}</b></button>`).join('')}</div>
+  </div>`).join('');
+}
+
+  const arr=STATIC_PRODUCTS;
+  $('products').innerHTML=arr.map(p=>`<div class="card product product-row">
+    <div><h3>${escapeHtml(p.name)}</h3></div>
+    <div class="variants">${p.variants.map(v=>`<button class="variant" onclick='openPay({name:${JSON.stringify(p.name+" • "+v.label)},price:${v.price}})'><span>${escapeHtml(v.label)}</span><b>${money(v.price)}</b></button>`).join('')}</div>
+  </div>`).join('');
 }
 
 function openPay(p){
