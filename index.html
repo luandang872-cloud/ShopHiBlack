@@ -154,7 +154,7 @@ async function api(path, options={}){
   let data={}; try{data=JSON.parse(text)}catch{data={error:text}}
   if(!r.ok) throw new Error(data.error||'Có lỗi xảy ra'); return data;
 }
-async async function boot(){
+async function boot(){
   try{
     const c=await api('/api/config');
     if($('shopName')) $('shopName').textContent=c.shopName||'Hí Black';
