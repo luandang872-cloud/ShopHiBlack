@@ -60,5 +60,6 @@ workflows:
           zip -qry "Hi-Black-unsigned.zip" "Hí-Black-unsigned.ipa"
     artifacts:
       - build/ios/ipa/*.ipa
+        - build/ios/ipa/*.zip
       - /tmp/xcodebuild_logs/*.log
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
